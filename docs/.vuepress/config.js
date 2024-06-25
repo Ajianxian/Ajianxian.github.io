@@ -6,7 +6,7 @@ export default defineUserConfig({
   lang: 'zh-CN',
 
   title: 'Ajianxian',
-  description: '这是我的第一个 VuePress 站点',
+  description: '人生在世，我只在乎是否活得精彩！',
 
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
