@@ -6,7 +6,7 @@ export default defineUserConfig({
   lang: 'zh-CN',
 
   title: 'Ajianxian',
-  description: '人生在世，我只在乎是否活得精彩！',
+  description: '『想要+做到=得到』',
 
   theme: defaultTheme({
     logo: 'https://vuejs.press/images/hero.png',
