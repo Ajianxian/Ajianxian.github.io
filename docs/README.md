@@ -1,10 +1,10 @@
 ---
 home: true
 title: 首页
-heroImage: https://vuejs.press/images/hero.png
+heroImage: images/hero.png
 actions:
   - text: 快速上手
-    link: /getting-started.html
+    link: /get-started.html
     type: primary
 
   - text: 项目简介
