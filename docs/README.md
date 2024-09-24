@@ -3,28 +3,33 @@ home: true
 title: 首页
 heroImage: images/hero.png
 actions:
-  - text: 快速上手
+  -
+    text: 快速上手
     link: /get-started.html
     type: primary
-
-  - text: 项目简介
-    link: /introduction.html
+  -
+    text: 关于作者
+    link: /about.html
     type: secondary
-
 features:
-  - title: 简洁至上
-    details: 以 Markdown 为中心的项目结构，以最少的配置帮助你专注于写作。
-  - title: Vue 驱动
-    details: 享受 Vue 的开发体验，可以在 Markdown 中使用 Vue 组件，又可以使用 Vue 来开发自定义主题。
-  - title: 高性能
-    details: VuePress 会为每个页面预渲染生成静态的 HTML，同时，每个页面被加载的时候，将作为 SPA 运行。
-  - title: 主题
-    details: 提供了一个开箱即用的默认主题。你也可以挑选一个社区主题，或者创建一个你自己的主题。
-  - title: 插件
-    details: 灵活的插件API，使得插件可以为你的站点提供许多即插即用的功能。
-  - title: 打包工具
-    details: 推荐的打包工具是 Vite ，但也同样支持使用 Webpack 。选一个你喜欢的来使用吧！
-
+  -
+    title: 指南
+    details: 编程的那些日子，敲下编程学习笔记。
+  -
+    title: 随笔
+    details: 程序以外的生活，记录生活中的小事。
+  -
+    title: 归档
+    details: 博客文章的归档，保留一些精彩回忆。
+  -
+    title: IDEA
+    details: 采用时间线记录，文章输出及IDEAS。
+  -
+    title: 技能
+    details: 每天进步一点点，持续努力提升自己。
+  -
+    title: 关于
+    details: 个人的简单介绍，做的一些项目作品。
 footer: MIT Licensed | Copyright © 2024 Ajianxian - All Rights Reserved
 ---
 

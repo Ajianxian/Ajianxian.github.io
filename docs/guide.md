@@ -1,3 +1,9 @@
+---
+title: 如何快速搭建本站
+author:
+createTime: 2024/06/28 16:20:40
+permalink: /article/vlbrorxb/
+---
 ### 引言
 
 对于一个程序员小白来说，拥有一个专属自己的博客网站是很酷炫的事情，接下来我就教大家如何用VuePress+GitHub Pages来打造你的自动化部署个人博客。
