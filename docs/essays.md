@@ -1,6 +1,6 @@
 ---
 title: 如何快速搭建本站
-author:
+author: Ajianxian
 createTime: 2024/06/28 16:20:40
 permalink: /article/uxo4ht8l/
 ---

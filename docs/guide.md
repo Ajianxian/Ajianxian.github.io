@@ -1,7 +1,9 @@
 ---
 title: 如何快速搭建本站
-author:
+author: Ajianxian
 createTime: 2024/06/28 16:20:40
+tags:
+  - 博客搭建
 permalink: /article/vlbrorxb/
 ---
 ### 引言
