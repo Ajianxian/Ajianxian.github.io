@@ -1,8 +1,11 @@
 ---
-title: 如何快速搭建本站
+title: 🚀从零到一，用VuePress+GitHub Pages打造你的自动化部署个人博客！
 author: Ajianxian
 createTime: 2024/06/28 16:20:40
-permalink: /article/uxo4ht8l/
+tags:
+  - 教程
+  - 博客搭建
+permalink: /article/vlbrorxb/
 ---
 ### 引言
 

@@ -19,22 +19,22 @@ export default defineUserConfig({
         text: '博客',
         link: '/blog/',
       },
-      {
-        text: '随笔',
-        link: '/essays',
-      },
+      // {
+      //   text: '随笔',
+      //   link: '/essays',
+      // },
       {
         text: '归档',
         link: '/blog/archives/',
       },
-      {
-        text: 'IDEA',
-        link: '/idea',
-      },
-      {
-        text: '技能',
-        link: '/skills',
-      },
+      // {
+      //   text: 'IDEA',
+      //   link: '/idea',
+      // },
+      // {
+      //   text: '技能',
+      //   link: '/skills',
+      // },
       {
         text: '关于',
         items: [
