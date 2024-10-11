@@ -58,6 +58,8 @@ self.onmessage = function(e) {
     console.log("222");
     
     // 执行异步的耗时任务
+    // 长时间运行的任务会阻塞JavaScript的事件循环，导致上述定时器的回调函数无法执行。
+    // 为了解决这个问题，可以将长任务分解成小块，并在每个小块之间使用setTimeout来让出执行权，确保定时器的回调有机会在每个小块执行之间运行。
     performLongTask().then(() => {
       console.log("333");
       clearInterval(subTimer);
@@ -71,8 +73,8 @@ async function performLongTask() {
   while (i < 100000000) {
     sum += i;
     i++;
-    // 通过 yield 控制权，让出执行机会
     if (i % 1000000 === 0) {
+      // worker内部存在耗时任务和异步操作，需要两者同步执行时的解决方法
       await new Promise(resolve => setTimeout(resolve, 0));
       self.postMessage({progress: ((i / 100000000) * 100).toFixed(0)});
     }

@@ -7,11 +7,12 @@ function createWorker() {
         return; // 如果已经创建了 Worker，不做任何操作
     }
     // 创建一个新的 Web Worker
-    // worker = new Worker('worker.js'); // 需使用网络URL路径
-    // 这里测试时需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
-    const blob = new Blob(['importScripts("file:///E:/xxxx/work.js")'], { type: 'application/javascript' });
-    const blobUrl = window.URL.createObjectURL(blob);
-    worker = new Worker(blobUrl);
+    worker = new Worker('worker.js'); // 需使用网络URL路径
+    // 使用本地文件来测试webworker的方法：
+    // 以下文件地址需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
+    //  const blob = new Blob(['importScripts("file:///E:/xxxx/worker.js")'], { type: 'application/javascript' });
+    //  const blobUrl = window.URL.createObjectURL(blob);
+    //  worker = new Worker(blobUrl);
 
     // 监听来自 Worker 的消息
     worker.onmessage = function(e) {
