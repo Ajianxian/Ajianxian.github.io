@@ -33,30 +33,12 @@ permalink: /article/fvvezj5b/
 
 4. **终止 Worker**：当 Worker 线程的任务完成后，可以通过调用 `terminate` 方法来终止 Worker 线程。
 
-### 三、示例代码
-
-```html
-<!-- index.html -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Web Workers Example</title>
-</head>
-<body>
-    <h1>Web Workers Example</h1>
-    <button id="startButton">Start Worker</button>
-    <button id="stopButton" disabled>Stop Worker</button>
-    <script src="app.js"></script>
-</body>
-</html>
-
-```
+### 三、简单示例
 ```javascript
 // app.js
 const worker = new Worker('worker.js');// 需使用网络URI路径
-// // 使用本地文件测试时需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
+// 使用本地文件来测试webworker的方法：
+// // 以下文件地址需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
 // const blob = new Blob(['importScripts("file:///E:/xxxx/worker.js")'], { type: 'application/javascript' });
 // const blobUrl = window.URL.createObjectURL(blob);
 // worker = new Worker(blobUrl);
@@ -82,7 +64,129 @@ function performHeavyCalculation() {
   return sum;
 }
 ```
+### 四、完整DEMO
+```html
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Workers Example</title>
+</head>
+<body>
+    <h1>Web Workers Example</h1>
+    <button id="startButton">Start Worker</button>
+    <button id="stopButton" disabled>Stop Worker</button>
+    <script src="app.js"></script>
+</body>
+</html>
+```
 
+```javascript
+// app.js
+let worker = null;
+let timer = null;
+
+// 函数用于创建和初始化 Worker
+function createWorker() {
+    if (worker) {
+        return; // 如果已经创建了 Worker，不做任何操作
+    }
+    // 创建一个新的 Web Worker
+    // worker = new Worker('worker.js'); // 需使用网络URL路径
+   // 使用本地文件来测试webworker的方法：
+   // 以下文件地址需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
+    const blob = new Blob(['importScripts("file:///E:/xxxx/worker.js")'], { type: 'application/javascript' });
+    const blobUrl = window.URL.createObjectURL(blob);
+    worker = new Worker(blobUrl);
+
+    // 监听来自 Worker 的消息
+    worker.onmessage = function(e) {
+        console.log('Message received from worker:', e.data);
+        document.getElementById('stopButton').disabled = false;
+    };
+
+    // 监听 Worker 错误
+    worker.onerror = function(error) {
+        console.error('Worker error:', error);
+    };
+}
+
+// 函数用于发送消息给 Worker
+function sendMessageToWorker(message) {
+    if (worker) {
+        worker.postMessage(message);
+    } else {
+        console.error('Worker not initialized');
+    }
+}
+
+// 函数用于终止 Worker
+function terminateWorker() {
+    if (worker) {
+        worker.terminate();
+        worker = null;
+        document.getElementById('startButton').disabled = false;
+        document.getElementById('stopButton').disabled = true;
+        clearInterval(timer);
+    }
+}
+
+// 监听按钮点击事件
+document.getElementById('startButton').addEventListener('click', function() {
+    this.disabled = true;
+    createWorker();
+    sendMessageToWorker('start'); // 发送消息给 Worker
+    timer = setInterval(() => {
+        // console.log("执行主线程任务", Math.random());
+    }, 1000);
+    console.log("开始Worker")
+});
+
+document.getElementById('stopButton').addEventListener('click', function() {
+    terminateWorker();
+    console.log("停止Worker")
+});
+```
+```javascript
+// worker.js
+let subTimer = null;
+self.onmessage = function(e) {
+  if (e.data === 'start') {
+    console.log("111");
+    let subTimer = setInterval(() => {
+      console.log("执行worker任务", Math.random());
+    }, 100);
+    console.log("222");
+    
+    // 执行异步的耗时任务
+    // 长时间运行的任务会阻塞JavaScript的事件循环，导致上述定时器的回调函数无法执行。
+    // 为了解决这个问题，可以将长任务分解成小块，并在每个小块之间使用setTimeout来让出执行权，确保定时器的回调有机会在每个小块执行之间运行。
+    performLongTask().then(() => {
+      console.log("333");
+      clearInterval(subTimer);
+      console.log("444");
+    });
+  }
+};
+
+async function performLongTask() {
+  let sum = 0, i = 0;
+  while (i < 100000000) {
+    sum += i;
+    i++;
+    if (i % 1000000 === 0) {
+       // worker内部存在耗时任务和异步操作，需要两者同步执行时的解决方法
+      await new Promise(resolve => setTimeout(resolve, 0));
+      self.postMessage({progress: ((i / 100000000) * 100).toFixed(0)});
+    }
+  }
+  console.log({sum});
+  self.postMessage({sum});
+}
+
+```
 
 通过这些示例，我们可以看到 Web Workers 如何帮助我们优化网页应用的性能，特别是在处理复杂或耗时的任务时。希望这些信息能帮助您在自己的项目中有效地使用 Web Workers。
 
