@@ -23,7 +23,7 @@ permalink: /article/fvvezj5b/
 - 实时通信：在聊天应用中，处理消息的加密和解密。
 
 ### 二、基本用法
-在实际项目中，我们可以通过以下步骤创建和使用 Web Workers：
+  在实际项目中，我们可以通过以下步骤创建和使用 Web Workers：
 
 1. **创建 Worker 实例**：使用 `new Worker('worker.js')` 创建一个新的 Worker 实例，其中 `'worker.js'` 是包含要在 Worker 线程中执行的代码的文件。
 
@@ -37,11 +37,6 @@ permalink: /article/fvvezj5b/
 ```javascript
 // app.js
 const worker = new Worker('worker.js');// 需使用网络URI路径
-// 使用本地文件来测试webworker的方法：
-// 以下文件地址需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
-// const blob = new Blob(['importScripts("file:///E:/xxxx/worker.js")'], { type: 'application/javascript' });
-// const blobUrl = window.URL.createObjectURL(blob);
-// worker = new Worker(blobUrl);
 
 worker.onmessage = function(e) {
   console.log('Message received from worker: ' + e.data);
@@ -65,6 +60,9 @@ function performHeavyCalculation() {
 }
 ```
 ### 四、完整DEMO
+1. 使用以下代码分别新建三个同级文件index.html、app.js、worker.js；
+2. 关闭app.js中本地文件测试webworker的方法部分代码注释，修改worker的文件路径为磁盘绝对路径并保存；
+2. 点击打开index.html文件，点击Start Worker按钮即可在控制台看到效果。
 ```html
 <!-- index.html -->
 <!DOCTYPE html>
@@ -95,6 +93,7 @@ function createWorker() {
     }
     // 创建一个新的 Web Worker
     worker = new Worker('worker.js'); // 需使用网络URL路径
+
    // 使用本地文件来测试webworker的方法：
    // 以下文件地址需要改为文件绝对路径，通过Blob对象来解决加载远程脚本或者绕过同源策略的限制问题
     // const blob = new Blob(['importScripts("file:///E:/xxxx/worker.js")'], { type: 'application/javascript' });
