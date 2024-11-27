@@ -1,18 +1,18 @@
 @font-face {
   font-family: 'Noto Sans SC';
-  src: url('../../public/fonts/noto-sans-sc.ttf') format('truetype');
+  src: url('/fonts/noto-sans-sc.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'HarmonyOS Sans SC Regular';
-  src: url('../../public/fonts/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
+  src: url('/fonts/HarmonyOS_Sans_SC_Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 @font-face {
   font-family: 'HarmonyOS Sans SC Bold';
-  src: url('../../public/fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
+  src: url('/fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
   font-weight: Bold;
   font-style: normal;
 }
