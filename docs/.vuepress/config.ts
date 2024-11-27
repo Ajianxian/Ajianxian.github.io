@@ -8,7 +8,26 @@ export default defineUserConfig({
   title: 'Ajianxian的个人博客',
   description: '',
 
-  bundler: viteBundler(),
+  bundler: viteBundler({
+    viteOptions: {
+      build: {
+        rollupOptions: {
+          output: {
+            // 定义输出文件的命名规则
+            assetFileNames: (assetInfo) => {
+              // 如果文件是字体文件，则将其输出到 fonts 目录下
+              if (assetInfo.name.endsWith('.ttf') || assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
+                return 'fonts/[name][extname]';
+              }
+              // 其他文件按照默认规则输出
+              return 'assets/[name][extname]';
+            }
+          }
+        }
+      }
+    },
+    vuePluginOptions: {},
+  }),
 
   theme: plumeTheme({
     // 添加您的部署域名
