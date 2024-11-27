@@ -9,7 +9,7 @@ const demoNote = defineNoteConfig({
 const essaysNote = defineNoteConfig({
   dir: 'essays',
   link: '/essays',
-  sidebar: ['', 'foo', 'bar', 'markdown'],
+  sidebar: ['', '程序员的自我修养'],
 })
 
 export const notes = defineNotesConfig({

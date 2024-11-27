@@ -1,0 +1,103 @@
+<!-- client.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>在线聊天室</title>
+</head>
+<body>
+    <h1>在线聊天室</h1>
+    <div id="messages"></div>
+    <div class="input-container">
+        <input type="text" id="messageInput" placeholder="输入消息...">
+        <button onclick="sendMessage()">发送</button>
+    </div>
+    <script src="client.js" defer></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f0f0;
+            height: 100vh;
+            margin: 0;
+            padding: 10px;
+        }
+
+        h1 {
+            margin: 20px;
+        }
+
+        #messages {
+            border: 1px solid #ccc;
+            background-color: #fff;
+            height: 400px;
+            width: 100%;
+            max-width: 600px;
+            overflow-y: auto;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .message {
+            margin: 5px 0;
+            padding: 10px;
+            border-radius: 10px;
+            max-width: 75%;
+            line-height: 1.5;
+            word-wrap: break-word;
+        }
+
+        .my-message {
+            background-color: #dcf8c6; /* 自己消息的背景色 */
+            align-self: flex-end;
+            margin-left: auto;
+        }
+
+        .other-message {
+            background-color: #eaedea; /* 对方消息的背景色 */
+            align-self: flex-start;
+            margin-right: auto;
+        }
+
+        .input-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+            max-width: 600px;
+            margin-top: 10px;
+        }
+
+        input {
+            flex: 1; /* 使输入框占据可用空间 */
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 20px;
+            margin-right: 10px; /* 右侧边距，用于分隔按钮 */
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        button {
+            padding: 10px 15px;
+            border: none;
+            background-color: #007bff;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+            transition: background-color 0.3s; /* 添加过渡效果 */
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</body>
+</html>

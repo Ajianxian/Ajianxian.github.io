@@ -1,0 +1,61 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="demo.css">
+</head>
+<body>
+    <div class="demo" id="demo">测试盒子</div>
+    <style>
+        #demo{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            /* border-width: 10px;
+            border-style: solid;
+            border-color: blue; */
+            border: 10px solid blue;
+        }
+    </style>
+</body>
+</html> -->
+
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>优先级测试</title>
+    <!-- <link rel="stylesheet" href="demo.css"> -->
+    <style>
+        /* ID选择器 */
+        #myElement {
+            color: blue; 
+            font-size: 20px;
+            text-decoration: underline;
+        }
+        #child {
+          color: #000;
+        }
+        a {
+            overflow: hidden;            /* 溢出隐藏 */
+            text-overflow: ellipsis;     /* 溢出用省略号显示 */
+            display: -webkit-box;        /* 作为弹性伸缩盒子模型显示 */
+            -webkit-box-orient: vertical;/* 设置伸缩盒子的子元素排列方式：从上到下垂直排列 */
+            -webkit-line-clamp: 3;       /* 显示的行数 */
+        }
+    </style>
+</head>
+<body>
+    <div id="myElement">这是一个测试元素
+      <div id="child">子元素</div>
+      <input type="text" title="输入框" placeholder="输入框提示文字" value="测试输入框">
+      <span>测试SPAN元素</span>
+      <a href="http://www.baidu.com" target="_blank">这是一段可能会溢出的多行文本。这段文本应该只显示三行，如果超出了三行，那么超出的部分将会被隐藏。</a>
+      测试元素
+    </div>
+    <div>测试行div元素</div>
+</body>
+</html>
