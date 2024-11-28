@@ -1,4 +1,4 @@
-@font-face {
+/* @font-face {
   font-family: 'Noto Sans SC';
   src: url('/fonts/noto-sans-sc.ttf') format('truetype');
   font-weight: normal;
@@ -15,10 +15,10 @@
   src: url('/fonts/HarmonyOS_Sans_SC_Bold.ttf') format('truetype');
   font-weight: Bold;
   font-style: normal;
-}
+} */
 :root {
   /* 修改主题字体 */
-  --vp-font-family-base: 'Noto Sans SC', 'HarmonyOS Sans SC', sans-serif;
+  --vp-font-family-base: Noto Sans SC, HarmonyOS Sans SC, SF Pro SC, SF Pro Text, SF Pro Icons, PingFang SC, Helvetica Neue, Helvetica, Arial, sans-serif;
   /** 主题颜色 */
 
   /*
