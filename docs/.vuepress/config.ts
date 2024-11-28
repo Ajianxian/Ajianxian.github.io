@@ -14,7 +14,7 @@ export default defineUserConfig({
         rollupOptions: {
           output: {
             // 定义输出文件的命名规则
-            assetFileNames: (assetInfo) => {
+            assetFileNames: (assetInfo: any) => {
               // 如果文件是字体文件，则将其输出到 fonts 目录下
               if (assetInfo.name.endsWith('.ttf') || assetInfo.name.endsWith('.woff') || assetInfo.name.endsWith('.woff2')) {
                 return 'fonts/[name][extname]';
