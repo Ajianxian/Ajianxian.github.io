@@ -8,7 +8,8 @@ import { notes } from './notes'
 export default defineThemeConfig({
   logo: '/images/hero.png',
   // your git repo url
-  docsRepo: 'https://github.com/Ajianxian/Ajianxian.github.io/edit/docs/',
+  docsRepo:'',
+  // docsRepo: 'https://github.com/Ajianxian/Ajianxian.github.io/edit/docs/docs/XXX',
   docsDir: 'docs',
 
   appearance: true,
